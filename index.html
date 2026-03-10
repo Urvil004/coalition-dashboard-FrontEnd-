@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech.Care - Patient Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 4L8 12L10 28C10 35 16 42 24 44C32 42 38 35 38 28L40 12L24 4Z" fill="#01F0FF"/>
+          <path d="M24 4L8 12L10 28C10 35 16 42 24 44" fill="#072635" opacity="0.3"/>
+          <rect x="21" y="14" width="6" height="20" rx="1" fill="#FFFFFF"/>
+          <rect x="14" y="21" width="20" height="6" rx="1" fill="#FFFFFF"/>
+        </svg>
+        <span class="logo-text">Tech.Care</span>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#" class="nav-link">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M8 18H2C1.45 18 1 17.55 1 17V11C1 10.45 1.45 10 2 10H8C8.55 10 9 10.45 9 11V17C9 17.55 8.55 18 8 18ZM16 18H10C9.45 18 9 17.55 9 17V11C9 10.45 9.45 10 10 10H16C16.55 10 17 10.45 17 11V17C17 17.55 16.55 18 16 18ZM8 9H2C1.45 9 1 8.55 1 8V2C1 1.45 1.45 1 2 1H8C8.55 1 9 1.45 9 2V8C9 8.55 8.55 9 8 9ZM16 9H10C9.45 9 9 8.55 9 8V2C9 1.45 9.45 1 10 1H16C16.55 1 17 1.45 17 2V8C17 8.55 16.55 9 16 9Z" fill="currentColor"/>
+          </svg>
+          <span>Overview</span>
+        </a>
+        <a href="#" class="nav-link active">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M9 9C11.21 9 13 7.21 13 5C13 2.79 11.21 1 9 1C6.79 1 5 2.79 5 5C5 7.21 6.79 9 9 9ZM9 11C6.33 11 1 12.34 1 15V17H17V15C17 12.34 11.67 11 9 11Z" fill="currentColor"/>
+          </svg>
+          <span>Patients</span>
+        </a>
+        <a href="#" class="nav-link">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M15 2H14V1H12V2H6V1H4V2H3C1.89 2 1.01 2.9 1.01 4L1 16C1 17.1 1.89 18 3 18H15C16.1 18 17 17.1 17 16V4C17 2.9 16.1 2 15 2ZM15 16H3V7H15V16Z" fill="currentColor"/>
+          </svg>
+          <span>Schedule</span>
+        </a>
+        <a href="#" class="nav-link">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M16 1H2C0.9 1 0 1.9 0 3V12C0 13.1 0.9 14 2 14H14L18 18V3C18 1.9 17.1 1 16 1Z" fill="currentColor"/>
+          </svg>
+          <span>Message</span>
+        </a>
+        <a href="#" class="nav-link">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M2 4H16V6H2V4ZM2 8H16V10H2V8ZM2 12H16V14H2V12Z" fill="currentColor"/>
+          </svg>
+          <span>Transactions</span>
+        </a>
+      </nav>
+
+      <div class="navbar-right">
+        <div class="user-profile">
+          <img src="data:image/svg+xml,%3Csvg width='44' height='44' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='22' cy='22' r='22' fill='%23D9D9D9'/%3E%3C/svg%3E" alt="Dr. Jose Simmons" class="user-avatar">
+          <div class="user-info">
+            <div class="user-name">Dr. Jose Simmons</div>
+            <div class="user-role">General Practitioner</div>
+          </div>
+        </div>
+        <button class="icon-btn settings-btn">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M17.43 10.98C17.47 10.66 17.5 10.34 17.5 10C17.5 9.66 17.47 9.34 17.43 9.02L19.54 7.37C19.73 7.22 19.78 6.95 19.66 6.73L17.66 3.27C17.54 3.05 17.27 2.97 17.05 3.05L14.56 4.05C14.04 3.65 13.48 3.32 12.87 3.07L12.49 0.42C12.46 0.18 12.25 0 12 0H8C7.75 0 7.54 0.18 7.51 0.42L7.13 3.07C6.52 3.32 5.96 3.66 5.44 4.05L2.95 3.05C2.72 2.96 2.46 3.05 2.34 3.27L0.34 6.73C0.21 6.95 0.27 7.22 0.46 7.37L2.57 9.02C2.53 9.34 2.5 9.67 2.5 10C2.5 10.33 2.53 10.66 2.57 10.98L0.46 12.63C0.27 12.78 0.22 13.05 0.34 13.27L2.34 16.73C2.46 16.95 2.73 17.03 2.95 16.95L5.44 15.95C5.96 16.35 6.52 16.68 7.13 16.93L7.51 19.58C7.54 19.82 7.75 20 8 20H12C12.25 20 12.46 19.82 12.49 19.58L12.87 16.93C13.48 16.68 14.04 16.34 14.56 15.95L17.05 16.95C17.28 17.04 17.54 16.95 17.66 16.73L19.66 13.27C19.78 13.05 19.73 12.78 19.54 12.63L17.43 10.98ZM10 13.5C8.07 13.5 6.5 11.93 6.5 10C6.5 8.07 8.07 6.5 10 6.5C11.93 6.5 13.5 8.07 13.5 10C13.5 11.93 11.93 13.5 10 13.5Z" fill="#072635"/>
+          </svg>
+        </button>
+        <button class="icon-btn more-btn">
+          <svg width="4" height="18" viewBox="0 0 4 18" fill="none">
+            <circle cx="2" cy="2" r="2" fill="#072635"/>
+            <circle cx="2" cy="9" r="2" fill="#072635"/>
+            <circle cx="2" cy="16" r="2" fill="#072635"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="content-grid">
+      <section class="patients-section">
+        <div class="section-header">
+          <h2>Patients</h2>
+          <button class="icon-btn-small">
+            <svg width="18" height="4" viewBox="0 0 18 4" fill="none">
+              <circle cx="2" cy="2" r="2" fill="#072635"/>
+              <circle cx="9" cy="2" r="2" fill="#072635"/>
+              <circle cx="16" cy="2" r="2" fill="#072635"/>
+            </svg>
+          </button>
+        </div>
+        <div class="patients-list" id="patientsList"></div>
+      </section>
+
+      <section class="diagnosis-section">
+        <div class="section-header">
+          <h2>Diagnosis History</h2>
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-header">
+            <h3>Blood Pressure</h3>
+            <div class="chart-controls">
+              <span>Last 6 months</span>
+              <button class="icon-btn-small">
+                <svg width="11" height="6" viewBox="0 0 11 6" fill="none">
+                  <path d="M1 1L5.5 5L10 1" stroke="#072635" stroke-width="1.5"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="bloodPressureChart"></canvas>
+          </div>
+          <div class="chart-stats">
+            <div class="stat-item">
+              <div class="stat-header">
+                <div class="legend-color systolic"></div>
+                <span>Systolic</span>
+              </div>
+              <div class="stat-value" id="systolicValue">160</div>
+              <div class="stat-status">
+                <span class="status-arrow">▲</span>
+                <span id="systolicLevel">Higher than Average</span>
+              </div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-header">
+                <div class="legend-color diastolic"></div>
+                <span>Diastolic</span>
+              </div>
+              <div class="stat-value" id="diastolicValue">78</div>
+              <div class="stat-status">
+                <span class="status-arrow">▼</span>
+                <span id="diastolicLevel">Lower than Average</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagnostic-history">
+          <div class="table-header">
+            <h3>Diagnostic List</h3>
+          </div>
+          <table class="diagnosis-table">
+            <thead>
+              <tr>
+                <th>Problem/Diagnosis</th>
+                <th>Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="diagnosticHistoryTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="profile-section">
+        <div class="profile-card">
+          <div class="profile-image-container">
+            <img id="profileImage" src="" alt="Patient" class="profile-image">
+          </div>
+          <h3 class="profile-name" id="profileName">Jessica Taylor</h3>
+          
+          <div class="profile-details">
+            <div class="profile-detail-row">
+              <div class="detail-icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                  <circle cx="21" cy="21" r="21" fill="#F6F7F8"/>
+                  <path d="M21 11C14.93 11 10 15.93 10 22C10 28.07 14.93 33 21 33C27.07 33 32 28.07 32 22C32 15.93 27.07 11 21 11ZM21 16C23.21 16 25 17.79 25 20C25 22.21 23.21 24 21 24C18.79 24 17 22.21 17 20C17 17.79 18.79 16 21 16ZM21 30.2C17.5 30.2 14.29 28.16 12.62 25.05C12.67 21.87 18.99 20.1 21 20.1C23 20.1 29.33 21.87 29.38 25.05C27.71 28.16 24.5 30.2 21 30.2Z" fill="#072635"/>
+                </svg>
+              </div>
+              <div class="detail-content">
+                <div class="detail-label">Date of Birth</div>
+                <div class="detail-value" id="dateOfBirth">August 23, 1996</div>
+              </div>
+            </div>
+
+            <div class="profile-detail-row">
+              <div class="detail-icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                  <circle cx="21" cy="21" r="21" fill="#F6F7F8"/>
+                  <path d="M17.5 11C15.57 11 14 12.57 14 14.5V27.5C14 29.43 15.57 31 17.5 31H24.5C26.43 31 28 29.43 28 27.5V14.5C28 12.57 26.43 11 24.5 11H17.5Z" fill="#072635"/>
+                </svg>
+              </div>
+              <div class="detail-content">
+                <div class="detail-label">Gender</div>
+                <div class="detail-value" id="gender">Female</div>
+              </div>
+            </div>
+
+            <div class="profile-detail-row">
+              <div class="detail-icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                  <circle cx="21" cy="21" r="21" fill="#F6F7F8"/>
+                  <path d="M21 11C16.03 11 12 15.03 12 20C12 26.25 21 35 21 35C21 35 30 26.25 30 20C30 15.03 25.97 11 21 11ZM21 23C19.34 23 18 21.66 18 20C18 18.34 19.34 17 21 17C22.66 17 24 18.34 24 20C24 21.66 22.66 23 21 23Z" fill="#072635"/>
+                </svg>
+              </div>
+              <div class="detail-content">
+                <div class="detail-label">Contact Info</div>
+                <div class="detail-value" id="contactInfo">(415) 555-1234</div>
+              </div>
+            </div>
+
+            <div class="profile-detail-row">
+              <div class="detail-icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                  <circle cx="21" cy="21" r="21" fill="#F6F7F8"/>
+                  <path d="M21 11C16.03 11 12 15.03 12 20C12 26.25 21 35 21 35C21 35 30 26.25 30 20C30 15.03 25.97 11 21 11ZM21 23C19.34 23 18 21.66 18 20C18 18.34 19.34 17 21 17C22.66 17 24 18.34 24 20C24 21.66 22.66 23 21 23Z" fill="#072635"/>
+                </svg>
+              </div>
+              <div class="detail-content">
+                <div class="detail-label">Emergency Contacts</div>
+                <div class="detail-value" id="emergencyContact">(415) 555-5678</div>
+              </div>
+            </div>
+
+            <div class="profile-detail-row">
+              <div class="detail-icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                  <circle cx="21" cy="21" r="21" fill="#F6F7F8"/>
+                  <path d="M28 14H26V12H16V14H14C12.9 14 12 14.9 12 16V28C12 29.1 12.9 30 14 30H28C29.1 30 30 29.1 30 28V16C30 14.9 29.1 14 28 14Z" fill="#072635"/>
+                </svg>
+              </div>
+              <div class="detail-content">
+                <div class="detail-label">Insurance Provider</div>
+                <div class="detail-value" id="insuranceProvider">Sunrise Health Assurance</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="show-info-btn">Show All Information</button>
+        </div>
+
+        <div class="lab-results-card">
+          <h3>Lab Results</h3>
+          <div class="lab-results-list" id="labResultsList"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
