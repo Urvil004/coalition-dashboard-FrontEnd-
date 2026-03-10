@@ -135,7 +135,7 @@ Background  →  #F6F7F8  Light Gray
 
 ## 📞 Contact
 
-**Urvil Patel** — Full Stack Developer
+**Urvil Darji** — Full Stack Developer
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit-01F0FF?style=flat-square)](https://techwithurvil.com)
